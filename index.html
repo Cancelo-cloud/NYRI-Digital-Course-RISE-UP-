@@ -165,12 +165,96 @@
                 page-break-inside: avoid;
             }
         }
+        
+        /* Toggle Styles */
+        .toggle-container {
+            margin-top: 15px;
+        }
+        
+        .toggle-btn {
+            width: 100%;
+            background: #2c5aa0;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .toggle-btn:hover {
+            background: #1a4080;
+        }
+        
+        .toggle-btn:active {
+            background: #0f2d5a;
+        }
+        
+        .toggle-arrow {
+            transition: transform 0.3s ease;
+            font-size: 12px;
+        }
+        
+        .toggle-arrow.rotated {
+            transform: rotate(180deg);
+        }
+        
+        .toggle-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            background: #f8f9fa;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .toggle-content.open {
+            max-height: 500px;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-top: none;
+        }
+        
+        .case-study-placeholder {
+            color: #495057;
+        }
+        
+        .case-study-placeholder h4 {
+            color: #2c5aa0;
+            margin-bottom: 15px;
+        }
+        
+        .case-study-placeholder ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .case-study-placeholder li {
+            margin: 5px 0;
+        }
+        
+        /* Mobile optimization */
+        @media (max-width: 768px) {
+            .toggle-btn {
+                padding: 15px;
+                font-size: 16px;
+            }
+            
+            .toggle-content.open {
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="course-title">NYRI Digital Course – RISE UP!</div>
-        <div class="subtitle">Daily 10-minute practice sessions facilitated by each team’s peer leader.</div>
+        <div class="subtitle">Practice and questions with teams facilitated by the peer leaders of each team. 10 minutes in each work day.</div>
     </div>
 
     <div class="month-header">Month 1 — Module One</div>
@@ -185,7 +269,7 @@
         
         <li class="lesson-item">
             <div class="lesson-title">Welcome & intro</div>
-            Unpacking what resilience truly means. <span class="video-duration">*3 min video*</span>
+            Unpacking what resilient truly means. <span class="video-duration">*3 min video*</span>
         </li>
         
         <li class="lesson-item">
@@ -201,7 +285,7 @@
                 <div class="material-header">Material:</div>
                 Use a board or large sheet of paper and add colors. Task time: <span class="task-time">*30 minutes*</span>
                 <div class="subsection">
-                    Express yourself confidently to your team in month 2 and beyond. 
+                    Share with ( — ) after a (month 2).
                 </div>
             </div>
         </li>
@@ -239,23 +323,23 @@
             
             <div class="material-section">
                 <div class="material-header">Material:</div>
-                Create a poem about yourself, how you want to be known and how you want to be remembered. Task Time: <span class="task-time">3 Hours</span>
+                Create a poem about yourself, how you want to known and how you want to be remembered. Task Time: <span class="task-time">3 Hours</span>
             </div>
         </li>
         
         <li class="lesson-item">
             <div class="lesson-title">Race, Class and Gender</div>
-            Let’s explore how race, class, and gender shape our identity and experiences. This will help us better understand the diverse world we live in — and how we can speak up in our own true way. <span class="video-duration">*9 min video*</span>
+            An exploration of social constructs and identity. Understand a bit more about the diverse world we live in — and how we hold our unique voice in an authentic way. <span class="video-duration">*9 min video*</span>
         </li>
         
         <li class="lesson-item">
             <div class="lesson-title">The Authentic Conversation – Step 1: Intersectionality and Social Constructs</div>
-            What do these big words mean? Watch this short video to learn more. <span class="video-duration">*4 min video*</span>
+            What does it mean? Check out the video for a deep diver. <span class="video-duration">*4 min video*</span>
         </li>
         
         <li class="lesson-item">
             <div class="lesson-title">The Authentic Conversation – Step 2: Power Dynamics and Historical Oppression</div>
-            How have unfair systems and power affected people in the past — and how do they still show up today? Let’s connect this to our own lives. <span class="video-duration">*3 min video*</span>
+            Power dynamics and historical oppression — how is this relevant to you now? <span class="video-duration">*3 min video*</span>
             
             <div class="material-section">
                 <div class="material-header">Material — Introspection:</div>
@@ -265,7 +349,7 @@
         
         <li class="lesson-item">
             <div class="lesson-title">The Authentic Conversation – Step 3a: Positionality (Empathy)</div>
-            Let’s understand where we each come from, notice our own biases, and learn to value different points of view. <span class="video-duration">*1 min video*</span>
+            Understanding positionality, recognizing our own biases and assumptions and learning to appreciate unique perspectives. <span class="video-duration">*1 min video*</span>
         </li>
         
         <li class="lesson-item">
@@ -294,7 +378,7 @@
     <ol>
         <li class="lesson-item">
             <div class="lesson-title">The Authentic Conversation – Step 4: Language and Communication</div>
-            How the way we speak and communicate can either build connection or create barriers in conversations.<span class="video-duration">*2 min video*</span>
+            How the language and style of our communication can add (or not) add value in conversations. <span class="video-duration">*2 min video*</span>
         </li>
         
         <li class="lesson-item">
@@ -328,7 +412,7 @@
 
     <div class="month-header page-break">Month 4 — Module Two</div>
     
-    <div class="lesson-number">Lesson 1 — 2.3</div>
+    <div class="lesson-number">Lesson 1 —</div>
     
     <ol>
         <li class="lesson-item">
@@ -362,9 +446,151 @@
             
             <div class="material-section">
                 <div class="material-header">Material:</div>
-                If you found the Atlas Version tedious to go through - try this simple DUCT version — HOW to apply Systems Thinking 
+                If you found the Atlas Version tedious to go through - try this simple DUCT version — HOW to apply Systems Thinking
+                
+                <div class="toggle-container">
+                    <button class="toggle-btn" onclick="toggleContent('systemsCase')">
+                        📋 Systems Thinking Case Study <span class="toggle-arrow" id="arrow-systemsCase">▼</span>
+                    </button>
+                    <div class="toggle-content" id="systemsCase">
+                        <div class="case-study-content">
+                            <h4>🧩 Applying Systems Thinking: Real-Life Case Studies</h4>
+                            <p><strong>DUCT Version:</strong></p>
+                            
+                            <div class="case-example">
+                                <h5>1. Leaking Tap at a Public Facility</h5>
+                                <div class="thinking-comparison">
+                                    <div class="conventional">
+                                        <strong>Conventional Thinking:</strong><br>
+                                        <em>"The municipality is to blame."</em>
+                                    </div>
+                                    <div class="systems">
+                                        <strong>Systems Thinking:</strong><br>
+                                        <em>"What prevented early action? Could a local resident have reported it sooner or attempted a basic fix? How might we build a system for faster community response?"</em>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="case-example">
+                                <h5>2. Children Keep Skipping the After-School Learning Program</h5>
+                                <div class="thinking-comparison">
+                                    <div class="conventional">
+                                        <strong>Conventional Thinking:</strong><br>
+                                        <em>"The kids are not serious about learning."</em>
+                                    </div>
+                                    <div class="systems">
+                                        <strong>Systems Thinking:</strong><br>
+                                        <em>"Are the sessions engaging? Are their basic needs (like food or safety) being met first? What do the children actually want? Are parents and teachers involved?"</em>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="case-example">
+                                <h5>3. Litter Everywhere After Weekend Events</h5>
+                                <div class="thinking-comparison">
+                                    <div class="conventional">
+                                        <strong>Conventional Thinking:</strong><br>
+                                        <em>"People are dirty and careless."</em>
+                                    </div>
+                                    <div class="systems">
+                                        <strong>Systems Thinking:</strong><br>
+                                        <em>"Were there enough bins or clean-up crews? Could incentives or reminders help? Was there any local involvement in the event planning?"</em>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="case-example">
+                                <h5>4. Missed Deadlines on a Team Project</h5>
+                                <div class="thinking-comparison">
+                                    <div class="conventional">
+                                        <strong>Conventional Thinking:</strong><br>
+                                        <em>"Someone on the team isn't pulling their weight."</em>
+                                    </div>
+                                    <div class="systems">
+                                        <strong>Systems Thinking:</strong><br>
+                                        <em>"Are the roles clear? Were expectations realistic? Is communication strong enough? Did we rely too heavily on one person?"</em>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="case-example">
+                                <h5>5. High Dropout Rate in a Skills Training Program</h5>
+                                <div class="thinking-comparison">
+                                    <div class="conventional">
+                                        <strong>Conventional Thinking:</strong><br>
+                                        <em>"People don't want to improve their lives."</em>
+                                    </div>
+                                    <div class="systems">
+                                        <strong>Systems Thinking:</strong><br>
+                                        <em>"Were transport costs an issue? Were the sessions at the right time? Were participants supported and followed up with? Is the training aligned with their actual goals?"</em>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="your-turn-section">
+                                <h4>Your Turn</h4>
+                                <p><strong>Answer the Last Few Questions and verify with your team – Notice the similarities in Conventional Thinking amongst your own team.</strong></p>
+                                
+                                <div class="exercise">
+                                    <h5>1. A Community Garden Isn't Producing Any Food</h5>
+                                    <div class="answer-space">
+                                        <strong>Conventional Thinking:</strong> <em>Answer:</em> ___________________________
+                                    </div>
+                                    <div class="answer-space">
+                                        <strong>Systems Thinking:</strong> <em>Answer:</em> ___________________________
+                                    </div>
+                                </div>
+
+                                <div class="exercise">
+                                    <h5>2. A Man Is Driving an Expensive Car in a Poor Neighborhood</h5>
+                                    <div class="answer-space">
+                                        <strong>Conventional Thinking:</strong> <em>Answer:</em> ___________________________
+                                    </div>
+                                    <div class="answer-space">
+                                        <strong>Systems Thinking:</strong> <em>Answer:</em> ___________________________
+                                    </div>
+                                </div>
+
+                                <div class="exercise">
+                                    <h5>3. A SEF Team Is Always Missing Deadlines</h5>
+                                    <div class="answer-space">
+                                        <strong>Conventional Thinking:</strong> <em>Answer:</em> ___________________________
+                                    </div>
+                                    <div class="answer-space">
+                                        <strong>Systems Thinking:</strong> <em>Answer:</em> ___________________________
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </li>
     </ol>
+
+    <script>
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            const arrow = document.getElementById('arrow-' + id);
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                arrow.classList.remove('rotated');
+                arrow.textContent = '▼';
+            } else {
+                content.classList.add('open');
+                arrow.classList.add('rotated');
+                arrow.textContent = '▲';
+            }
+        }
+        
+        // Close all toggles on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleContents = document.querySelectorAll('.toggle-content');
+            toggleContents.forEach(content => {
+                content.classList.remove('open');
+            });
+        });
+    </script>
 </body>
 </html>
