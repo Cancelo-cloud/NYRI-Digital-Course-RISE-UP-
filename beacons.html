@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenBeacons and the Rise Up Course</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #1e4d3d 0%, #2d7a4d 25%, #4ba86a 50%, #7dd687 75%, #b8f2a6 100%);
+            min-height: 100vh;
+            color: #2d5c3d;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            text-align: center;
+            color: #1e4d3d;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #1e4d3d, #4ba86a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .program-info {
+            background: linear-gradient(135deg, #e8f5e8, #f0f9f0);
+            border: 2px solid #4ba86a;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(75, 168, 106, 0.1);
+        }
+        .program-info h3 {
+            color: #1e4d3d;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        .program-info ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        .program-info li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+        }
+        .program-info li::before {
+            content: "🌱";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .toggle-container {
+            margin: 20px 0;
+        }
+        .toggle-header {
+            background: linear-gradient(135deg, #4ba86a, #7dd687);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(75, 168, 106, 0.3);
+            position: relative;
+        }
+        .toggle-header:hover {
+            background: linear-gradient(135deg, #3d9456, #6bc474);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(75, 168, 106, 0.4);
+        }
+        .toggle-header::after {
+            content: "▼";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+        }
+        .toggle-header.active::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+        .toggle-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #f9fdf9;
+            border-radius: 0 0 10px 10px;
+        }
+        .toggle-content.active {
+            max-height: 1000px;
+            padding: 20px;
+        }
+        .toggle-content ol, .toggle-content ul {
+            padding-left: 30px;
+        }
+        .toggle-content li {
+            margin-bottom: 10px;
+            padding: 5px;
+            background: rgba(75, 168, 106, 0.05);
+            border-radius: 5px;
+        }
+        .professional-creed {
+            text-align: center;
+            font-style: italic;
+            font-size: 1.2em;
+            color: #1e4d3d;
+            background: linear-gradient(135deg, #b8f2a6, #e8f5e8);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 3px solid #4ba86a;
+            box-shadow: 0 10px 20px rgba(75, 168, 106, 0.15);
+            position: relative;
+        }
+        .module {
+            background: white;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border: 1px solid #e0f2e0;
+        }
+        .module-header {
+            background: linear-gradient(135deg, #2d7a4d, #4ba86a);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        .module-header h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        .module-content {
+            padding: 30px;
+        }
+        .module-focus {
+            background: linear-gradient(135deg, #f0f9f0, #e8f5e8);
+            border-left: 5px solid #4ba86a;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 0 10px 10px 0;
+            font-weight: 500;
+            color: #1e4d3d;
+        }
+        .month-structure {
+            margin-bottom: 25px;
+        }
+        .daily-toolbox {
+            background: #fafdfb;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #e0f2e0;
+        }
+        .daily-toolbox h4 {
+            color: #1e4d3d;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        .daily-toolbox ol {
+            padding-left: 25px;
+        }
+        .daily-toolbox li {
+            margin-bottom: 15px;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #7dd687;
+        }
+        .campaign {
+            background: linear-gradient(135deg, #7dd687, #b8f2a6);
+            color: #1e4d3d;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+        .campaign::before {
+            content: "🌍 ";
+            font-size: 1.2em;
+        }
+        .notes {
+            background: #fff9e6;
+            border: 2px dashed #ffcc00;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #8b6914;
+            font-style: italic;
+        }
+        hr {
+            border: none;
+            height: 3px;
+            background: linear-gradient(135deg, #4ba86a, #7dd687);
+            margin: 40px 0;
+            border-radius: 2px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+           
+            h1 {
+                font-size: 2em;
+            }
+           
+            .toggle-header {
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GreenBeacons and the Rise Up Course</h1>
+       
+        <div class="logo-container">
+            <img id="greenbeacons-logo" alt="GreenBeacons Logo" style="max-width: 250px; height: auto; display: block; margin: 0 auto 30px; border-radius: 15px; box-shadow: 0 15px 30px rgba(75, 168, 106, 0.3); background: rgba(255, 255, 255, 0.9); padding: 20px;">
+        </div>
+       
+        <div class="program-info">
+            <h3><strong>Programme Duration:</strong> 10 months</h3>
+            <ul>
+                <li><strong>Rise Up Completion:</strong> 4-5 months</li>
+                <li><strong>Work Schedule:</strong> 7 days/week + 4 compulsory learning days</li>
+            </ul>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle-header" onclick="toggleContent(this)">
+                GreenBeacons Support Services
+            </div>
+            <div class="toggle-content">
+                <ol>
+                    <li>Personal Development Support</li>
+                    <li>Public Speaking Support</li>
+                    <li>Business Support</li>
+                    <li>Leadership Support</li>
+                    <li>Community Engagement Support</li>
+                    <li>Water Monitoring Support</li>
+                </ol>
+            </div>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle-header" onclick="toggleContent(this)">
+                Reward System: Just 2 ⁉️⁉️⁉️
+            </div>
+            <div class="toggle-content">
+                <ul>
+                    <li><strong>Best Learner / Business Buddy:</strong>
+                        <ul style="margin-top: 10px;">
+                            <li>Most Engagement</li>
+                            <li>Most Businesses Started or Courses Completed</li>
+                        </ul>
+                    </li>
+                    <li><strong>Best Enviro Champ:</strong>
+                        <ul style="margin-top: 10px;">
+                            <li>Most improvement in business</li>
+                            <li>Best speech, etc</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="professional-creed">
+            <strong>Professional Creed:</strong> If I cannot be trusted with the simple, basic things — how can I expect to be trusted with bigger and better responsibilities?
+        </div>
+        <div class="module">
+            <div class="module-header">
+                <h2>Module 1: Identity & Authentic Conversation (Month 1)</h2>
+            </div>
+            <div class="module-content">
+                <div class="module-focus">
+                    <strong>Module One Focus:</strong> Self-awareness, identity exploration, communication skills.
+                </div>
+                <h3>Month 1 Structure:</h3>
+               
+                <div class="toggle-container">
+                    <div class="toggle-header" onclick="toggleContent(this)">
+                        Weekly Learning Days (4 per month)
+                    </div>
+                    <div class="toggle-content">
+                        <ul>
+                            <li><strong>Learning Day 1:</strong> Public speaking session Facilitated by Learning Buddy - "Introducing yourself authentically"
+                                <ul style="margin-top: 8px;">
+                                    <li>Monday: Every presentation recorded by TL — DUCT Phone</li>
+                                </ul>
+                            </li>
+                            <li><strong>Learning Day 2:</strong> Public speaking session Facilitated by Learning Buddy - "Communicating across differences"
+                                <ul style="margin-top: 8px;">
+                                    <li>Monday: Every presentation recorded by TL — DUCT Phone</li>
+                                </ul>
+                            </li>
+                            <li><strong>Learning Day 3:</strong> Workshop - "Your identity shapes your leadership style"</li>
+                            <li><strong>Learning Day 4:</strong> Reflection session - "Authentic conversations in workplace"</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="daily-toolbox">
+                    <h4><strong>Daily Toolbox Talks (7 days/week):</strong></h4>
+                    <ol>
+                        <li><strong>Rise Up — Understanding your unique value & Self-Portrait</strong>
+                            <ul style="margin-top: 10px; list-style-type: disc; margin-left: 20px;">
+                                <li>"Who am I?"</li>
+                                <li>"What magic do I hold?"</li>
+                                <li>"Where is my life going?"</li>
+                            </ul>
+                        </li>
+                        <li><strong>Rise Up — Race, Class and Gender — Power dynamics & Historical Oppression</strong>
+                            <ul style="margin-top: 10px; list-style-type: disc; margin-left: 20px;">
+                                <li>Introduce "Leader with no title"</li>
+                            </ul>
+                        </li>
+                        <li><strong>Rise Up — Language and Communication + Listening Skills</strong>
+                            <ul style="margin-top: 10px; list-style-type: disc; margin-left: 20px;">
+                                <li>1% topics</li>
+                            </ul>
+                        </li>
+                        <li><strong>Rise Up — Uncomfortable Conversations — Dialogue as a tool</strong>
+                            <ul style="margin-top: 10px; list-style-type: disc; margin-left: 20px;">
+                                <li>Triggering Toolbox talks: "Black tax, legacy, illiteracy, unemployment, etc." to reveal biases</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div class="campaign">
+                    <strong>Monthly Clean-up Campaign:</strong> Focus on authentic engagement with community members.
+                </div>
+                <div class="notes">
+                    Belinda not yet introduced: Ground work with Project Managers, Team Leaders, Marketing and Partner Orgs.
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="module">
+            <div class="module-header">
+                <h2>Module 2: Systems Thinking & Leadership (Month 2)</h2>
+            </div>
+            <div class="module-content">
+                <div class="module-focus">
+                    <strong>Module Two Focus:</strong> Understanding interconnections, community development, transformational leadership
+                </div>
+                <h3>Month 2 Structure:</h3>
+               
+                <div class="toggle-container">
+                    <div class="toggle-header" onclick="toggleContent(this)">
+                        Weekly Learning Days
+                    </div>
+                    <div class="toggle-content">
+                        <ul>
+                            <li><strong>Learning Day 1:</strong> Public speaking session - "Presenting complex ideas clearly"
+                                <ul style="margin-top: 8px;">
+                                    <li>Monday: Every presentation recorded by TL — DUCT Phone</li>
+                                </ul>
+                            </li>
+                            <li><strong>Learning Day 2:</strong> Business support workshop - "Project writing basics"</li>
+                            <li><strong>Learning Day 3:</strong> Public speaking session - "Leading through influence"
+                                <ul style="margin-top: 8px;">
+                                    <li>Monday: Every presentation recorded by TL — DUCT Phone</li>
+                                </ul>
+                            </li>
+                            <li><strong>Learning Day 4:</strong> ABCD model workshop - "Identifying community assets"</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="daily-toolbox">
+                    <h4><strong>Daily Toolbox Talks:</strong></h4>
+                    <ol>
+                        <li><strong>Rise Up —</strong> Systems thinking in your work environment
+                            <ul style="margin-top: 10px; list-style-type: disc; margin-left: 20px;">
+                                <li>Toolbox talks (solution-driven steps to challenges)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Rise Up — Introduction to ABCD</strong> <em>(Asset Based Community Development)</em>
+                            <ul style="margin-top: 10px; list-style-type: disc; margin-left: 20px;">
+                                <li>Toolbox: "Community Mapping, resources, stakeholders, strengths."</li>
+                            </ul>
+                        </li>
+                        <li><strong>Rise Up —</strong> Leadership journaling for growth
+                            <ul style="margin-top: 10px; list-style-type: disc; margin-left: 20px;">
+                                <li>"Leader with no title."</li>
+                                <li>Rise Up Material "translated or edited"</li>
+                            </ul>
+                        </li>
+                        <li><strong>Rise Up —</strong> Wisdom circles for decision-making
+                            <ul style="margin-top: 10px; list-style-type: disc; margin-left: 20px;">
+                                <li>Side hustle: "Seeing business opportunities in systems"</li>
+                                <li>Toolbox: Find business partners and start building together.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div class="campaign">
